@@ -2,8 +2,8 @@
 
     require 'conectarConServer.php';
 
-    $sql = "SELECT idMarca, mkNombre
-                FROM marcas";
+    $sql = "SELECT idCategoria, catNombre
+                FROM categorias";
 
     $resultado = mysqli_query( $link, $sql );
 
@@ -11,8 +11,8 @@
 
     while( $fila = mysqli_fetch_assoc( $resultado ) )
     {
-        echo $fila['idMarca'], ' ';
-        echo $fila['mkNombre'], '<br>';
+        echo $fila['idCategoria'], ' ';
+        echo $fila['catNombre'], '<br>';
     }
 
 

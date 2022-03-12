@@ -1,4 +1,4 @@
-# Guía para conectar PHP copn servidor de bbdd
+# Guía para conectar PHP con servidor de bbdd
 
 1. Conexión a server + selección de base
 2. Creación de mensaje SQL
