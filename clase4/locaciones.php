@@ -15,7 +15,7 @@
             'Francia', 'Egipto', 'Vietnam',
             'USA', 'Peru', 'Australia',
             'Tailandia', 'Jordania', 'España',
-            'Grecia', 'India', 'China',
+            'Grecia', 'India', 'China'
         ];
     $descripciones =
         [
@@ -31,10 +31,11 @@
             'Machu Picchu, Perú',
             'Opera House, Sydney', 'Grand Palace, Bangkok', 'petra',
             'La Sagrada Familia, Barcelona',
-            'Santorini, Archipiélago de las Cícladas ',
+            'Santorini, Archipiélago de las Cícladas',
             'Taj Mahal, Agra',
             'La Gran Muralla, Jinshanling'
         ];
+    $cantidad = count( $paises );
 ?>
 <!doctype html>
 <html lang="en">
@@ -47,17 +48,27 @@
 </head>
 <body>
 <main>
-
+<?php
+   //inicio de bucle
+   for( $n = 0; $n < $cantidad; $n++ )
+        {
+?>
         <article>
-            <img src="locaciones/eiffel.jpg">
-            <h2>país</h2>
+            <img src="locaciones/<?= $fotos[$n]; ?>.jpg">
+            <h2><?= $paises[$n]; ?></h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto assumenda atque corporis est expedita hic ipsam laborum maxime quas.
+                <?= $descripciones[$n]; ?>
             </p>
         </article>
+<?php
+        }
+    //fin de bucle
+?>
 
 
 </main>
 
 </body>
 </html>
+
+
