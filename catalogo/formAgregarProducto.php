@@ -1,12 +1,6 @@
 <?php
-    //require 'config/config.php';
-    require 'funciones/conexion.php';
-    require 'funciones/marcas.php';
-    require 'funciones/categorias.php';
-    $marcas = listarMarcas();
-    $categorias = listarCategorias();
-    include 'includes/header.html';
-    include 'includes/nav.php';
+    include 'layout/header.php';
+    include 'layout/nav.php';
 ?>
 
     <main class="container">
@@ -16,12 +10,12 @@
             <form action="agregarProducto.php" method="post" enctype="multipart/form-data">
 
                 <div class="form-group mb-4">
-                    <label for="prdNombre">Nombre del Producto</label>
+                    <label for="prdNombre">Nombre del producto</label>
                     <input type="text" name="prdNombre"
                            class="form-control" id="prdNombre" required>
                 </div>
 
-                <label for="prdPrecio">Precio del Producto</label>
+                <label for="prdPrecio">Precio del producto</label>
                 <div class="input-group mb-4">
                     <div class="input-group-prepend">
                         <div class="input-group-text">$</div>
@@ -34,13 +28,6 @@
                     <label for="idMarca">Marca</label>
                     <select class="form-select" name="idMarca" id="idMarca" required>
                         <option value="">Seleccione una marca</option>
-            <?php
-                while ( $marca = mysqli_fetch_assoc( $marcas ) ){
-            ?>
-                        <option value="<?= $marca['idMarca'] ?>"><?= $marca['mkNombre'] ?></option>
-            <?php
-                }
-            ?>
                     </select>
                 </div>
 
@@ -48,24 +35,12 @@
                     <label for="idCategoria">Categoría</label>
                     <select class="form-select" name="idCategoria" id="idCategoria" required>
                         <option value="">Seleccione una categoría</option>
-    <?php
-                while ( $categoria = mysqli_fetch_assoc($categorias) ) {    
-    ?>
-                        <option value="<?= $categoria['idCategoria'] ?>"><?= $categoria['catNombre'] ?></option>
-    <?php
-                }
-    ?>                
                     </select>
                 </div>
 
                 <div class="form-group mb-4">
-                    <label for="prdPresentacion">Presentación del Producto</label>
-                    <textarea name="prdPresentacion" class="form-control" id="prdPresentacion" rows="3" required></textarea>
-                </div>
-
-                <div class="form-group mb-4">
-                    <label for="prdStock">Stock del Producto</label>
-                    <input type="number" name="prdStock" class="form-control" id="prdStock" min="0" required>
+                    <label for="prdDescripcion">Descripción del producto</label>
+                    <textarea name="prdDescripcion" class="form-control" id="prdDescripcion" rows="3" required></textarea>
                 </div>
 
                 <div class="form-group mt-1 mb-4">
@@ -83,4 +58,6 @@
 
     </main>
 
-<?php  include 'includes/footer.php';  ?>
+<?php
+    include 'layout/footer.php';
+?>
