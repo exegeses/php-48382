@@ -1,4 +1,9 @@
 <?php
+    require 'funciones/conexion.php';
+    require 'funciones/marcas.php';
+    require 'funciones/categorias.php';
+    $marcas = listarMarcas();
+    $categorias = listarCategorias();
     include 'layout/header.php';
     include 'layout/nav.php';
 ?>
@@ -28,6 +33,13 @@
                     <label for="idMarca">Marca</label>
                     <select class="form-select" name="idMarca" id="idMarca" required>
                         <option value="">Seleccione una marca</option>
+<?php
+                while ( $marca = mysqli_fetch_assoc( $marcas ) ){
+?>
+                        <option value="<?= $marca['idMarca'] ?>"><?= $marca['mkNombre'] ?></option>
+<?php
+                }
+?>
                     </select>
                 </div>
 
@@ -35,6 +47,13 @@
                     <label for="idCategoria">Categoría</label>
                     <select class="form-select" name="idCategoria" id="idCategoria" required>
                         <option value="">Seleccione una categoría</option>
+<?php
+            while ( $categoria = mysqli_fetch_assoc( $categorias ) ){
+?>
+                        <option value="<?= $categoria['idCategoria'] ?>"><?= $categoria['catNombre'] ?></option>
+<?php
+            }
+?>
                     </select>
                 </div>
 
