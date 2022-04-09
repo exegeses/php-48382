@@ -18,6 +18,24 @@
         return $resultado;
     }
 
+    function verMarcaPorID()
+    {
+        $idMarca = $_GET['idMarca'] ;
+        $link = conectar();
+        $sql = "SELECT idMarca, mkNombre 
+                    FROM marcas
+                    WHERE idMarca = ".$idMarca;
+        try{
+            $resultado = mysqli_query( $link, $sql );
+            $marca = mysqli_fetch_assoc( $resultado );
+        }
+        catch(Exception $e){
+            $marca = false;
+            echo $e->getMessage();
+        }
+        return $marca;
+    }
+
     function agregarMarca()
     {
         //captura de datos enviados por el form
