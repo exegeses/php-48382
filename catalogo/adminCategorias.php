@@ -13,7 +13,7 @@
                 </a>
             </div>
             <div class="col text-end">
-                <a href="#" class="btn btn-outline-secondary">
+                <a href="formAgregarCategoria.php" class="btn btn-outline-secondary">
                     <i class="bi bi-plus-square"></i>
                     Agregar
                 </a>
