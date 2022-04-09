@@ -56,14 +56,34 @@
     {
         //capturamos datos enviados por el form
         $prdNombre = $_POST['prdNombre'] ;
-        $prdPrecio = $_POST['prdNombre'] ;
+        $prdPrecio = $_POST['prdPrecio'] ;
         $idMarca = $_POST['idMarca'] ;
         $idCategoria = $_POST['idCategoria'] ;
         $prdDescripcion = $_POST['prdDescripcion'] ;
         //subirImagen *
         $prdImagen = subirImagen();
         //insertar en tabla productos
-        
+        $link = conectar();
+        $sql ="INSERT INTO productos 
+                        VALUES  
+                            ( DEFAULT,
+                                '".$prdNombre."',
+                                ".$prdPrecio.",
+                                ".$idMarca.",
+                                ".$idCategoria.",
+                                '".$prdDescripcion."',
+                                '". $prdImagen."', 
+                             1 )";
+
+        try{
+            $resultado = mysqli_query( $link, $sql );
+        }
+        catch(Exception $e){
+            $resultado = false;
+            echo $e->getMessage();
+        }
+        return $resultado;
+
     }
 
 /*

@@ -1,16 +1,17 @@
 <?php
 
+    require 'funciones/conexion.php';
     require 'funciones/productos.php';
-    agregarProducto();
+    $chequeo = agregarProducto();
     include 'layout/header.php';
     include 'layout/nav.php';
     
     $css = 'danger';
     $mensaje = 'No se pudo agregar el producto.';
-   /* if ( $chequeo ){
+    if ( $chequeo ){
         $css = 'success';
         $mensaje = 'Producto agregado correctamente.';
-    }*/
+    }
 
 ?>
 
