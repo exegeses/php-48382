@@ -35,7 +35,7 @@
     {
         $idProducto = $_GET['idProducto'] ;
         $link = conectar();
-        $sql = "SELECT prdNombre, prdPrecio,
+        $sql = "SELECT idProducto, prdNombre, prdPrecio,
                         m.idMarca, mkNombre, 
                         c.idCategoria, catNombre, 
                         prdDescripcion, prdImagen
@@ -56,8 +56,13 @@
 
     function subirImagen()
     {
-        // si no enviaron imagen
+        // si no enviaron imagen en agregar
         $prdImagen = 'noDisponible.png';
+
+        // si no enviaron imagen en modificar
+        if ( isset( $_POST['imgActual'] ) ){
+            $prdImagen = $_POST['imgActual'];
+        }
 
         // enviaron imagen y está todo ok
         if( $_FILES['prdImagen']['error'] == 0 ){
@@ -105,7 +110,35 @@
             echo $e->getMessage();
         }
         return $resultado;
+    }
 
+    function modificarProducto(){
+        $link = conectar();
+        $idProducto = $_POST['idProducto'];
+        $prdNombre = $_POST['prdNombre'];
+        $prdPrecio = $_POST['prdPrecio'];
+        $idMarca = $_POST['idMarca'];
+        $idCategoria = $_POST['idCategoria'];
+        $prdDescripcion = $_POST['prdDescripcion'];
+        //subirImagen *
+        $prdImagen = subirImagen();
+        $sql = "UPDATE productos  
+                  SET prdNombre = '".$prdNombre."',
+                      prdPrecio = ".$prdPrecio.",
+                      idMarca = ".$idMarca.",
+                      idCategoria = ".$idCategoria.",
+                      prdDescripcion = '".$prdDescripcion."',
+                      prdImagen = '".$prdImagen."'
+                  WHERE idProducto = ".$idProducto;
+
+        try{
+            $resultado = mysqli_query($link,$sql);
+        }
+        catch(Exception $e){
+            $resultado = false;
+            echo $e->getMessage;
+        }
+        return $resultado;
     }
 
 /*
