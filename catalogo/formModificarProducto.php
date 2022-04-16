@@ -36,7 +36,7 @@
                 <div class="form-group mb-4">
                     <label for="idMarca">Marca</label>
                     <select class="form-select" name="idMarca" id="idMarca" required>
-                        <option value="">Seleccione una marca</option>
+                        <option value="<?= $producto['idMarca'] ?>"><?= $producto['mkNombre'] ?></option>
 <?php
                 while ( $marca = mysqli_fetch_assoc( $marcas ) ){
 ?>
@@ -54,7 +54,7 @@
 <?php
             while ( $categoria = mysqli_fetch_assoc( $categorias ) ){
 ?>
-                        <option value="<?= $categoria['idCategoria'] ?>"><?= $categoria['catNombre'] ?></option>
+                        <option <?= ( $categoria['idCategoria'] == $producto['idCategoria'] )?'selected':''; ?> value="<?= $categoria['idCategoria'] ?>"><?= $categoria['catNombre'] ?></option>
 <?php
             }
 ?>
@@ -76,6 +76,9 @@
                     <label for="formFile" class="form-label">Modificar imagen (opcional):</label>
                     <input type="file" name="prdImagen" class="form-control" id="formFile">
                 </div>
+
+                <input type="hidden" name="idProducto"
+                       value="<?= $producto['idProducto'] ?>">
 
                 <button class="btn btn-dark px-4">Modificar producto</button>
                 <a href="adminProductos.php" class="btn btn-outline-secondary">
