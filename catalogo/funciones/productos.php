@@ -141,6 +141,22 @@
         return $resultado;
     }
 
+    function eliminarProducto()
+    {
+        $idProducto = $_POST['idProducto'];
+        $link = conectar();
+        $sql = "DELETE FROM productos  
+                  WHERE idProducto = ".$idProducto;
+        try{
+            $resultado = mysqli_query($link,$sql);
+        }
+        catch(Exception $e){
+            $resultado = false;
+            echo $e->getMessage;
+        }
+        return $resultado;
+    }
+
 /*
  * listarProductos()
  * verProductoPorID()
