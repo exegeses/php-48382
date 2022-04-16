@@ -31,6 +31,28 @@
         return $resultado;
     }
 
+    function verProductoPorID()
+    {
+        $idProducto = $_GET['idProducto'] ;
+        $link = conectar();
+        $sql = "SELECT prdNombre, prdPrecio,
+                        m.idMarca, mkNombre, 
+                        c.idCategoria, catNombre, 
+                        prdDescripcion, prdImagen
+                    FROM productos p, marcas m, categorias c
+                    WHERE m.idMarca = p.idMarca
+                    AND c.idCategoria = p.idCategoria
+                    AND idProducto = ".$idProducto;
+        try{
+            $resultado = mysqli_query( $link, $sql );
+            $producto = mysqli_fetch_assoc( $resultado );
+        }
+        catch(Exception $e){
+            $producto = false;
+            echo $e->getMessage();
+        }
+        return $producto;
+    }
 
     function subirImagen()
     {

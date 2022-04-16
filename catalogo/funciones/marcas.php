@@ -20,7 +20,7 @@
 
     function verMarcaPorID()
     {
-        $idMarca = $_GET['idMarca'] ;
+        $idMarca = $_GET['idMarca'];
         $link = conectar();
         $sql = "SELECT idMarca, mkNombre 
                     FROM marcas
@@ -57,6 +57,22 @@
         return $resultado;
     }
 
+    function modificarMarca()
+    {
+        $idMarca = $_POST['idMarca'];
+        $mkNombre = $_POST['mkNombre'];
+        $link = conectar();
+        $sql = "UPDATE marcas
+                    SET mkNombre = '".$mkNombre."'
+                    WHERE idMarca = ".$idMarca;
+        try {
+            $resultado = mysqli_query( $link, $sql );
+        }catch ( Exception $e ){
+            $resultado = false;
+            echo $e->getMessage();
+        }
+        return $resultado;
+    }
 
 /*
  * listarMarcas()

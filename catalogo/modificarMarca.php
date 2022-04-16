@@ -1,20 +1,20 @@
 <?php
     require 'funciones/conexion.php';
     require 'funciones/marcas.php';
-    $chequeo = agregarMarca();
+    $chequeo = modificarMarca();
     include 'layout/header.php';
     include 'layout/nav.php';
     
     $css = 'danger';
-    $mensaje = 'No se pudo agregar la marca.';
+    $mensaje = 'No se pudo modificar la marca.';
     if ( $chequeo ){
         $css = 'success';
-        $mensaje = 'Marca agregada correctamente.';
+        $mensaje = 'Marca modificada correctamente.';
     }
 ?>
 
     <main class="container py-4">
-        <h1>Alta de una marca</h1>
+        <h1>Modificación de una marca</h1>
 
         <div class="alert alert-<?= $css ?> col-7 mx-auto">
             <?= $mensaje ?>
