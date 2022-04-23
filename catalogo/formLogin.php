@@ -1,6 +1,6 @@
 <?php
     //require 'config/config.php';
-    include 'layout/header.html';
+    include 'layout/header.php';
     include 'layout/nav.php';
 ?>
 
@@ -22,6 +22,10 @@
                     Ingresar
                 </button>
             </form>
+        </div>
+
+        <div class="alert alert-danger shadow p-4 col-8 mx-auto">
+            Nombre de usuario y/o clave incorrectos
         </div>
 
 
