@@ -1,4 +1,8 @@
 <?php
+
+    require 'funciones/conexion.php';
+    require 'funciones/categorias.php';
+    $categorias = listarCategorias();
     include 'layout/header.php';
     include 'layout/nav.php';
 ?>
@@ -22,12 +26,16 @@
 
         
         <ul class="list-group">
+
+<?php
+        while ( $categoria = mysqli_fetch_assoc( $categorias ) ){
+?>
             <li class="col-md-6 list-group-item list-group-item-action d-flex justify-content-between">
             <div class="col">
-                <span class="fs-4">Categoría</span>
+                <span class="fs-4"><?= $categoria['catNombre'] ?></span>
             </div>
             <div class="col text-end btn-group">
-                <a href="#" class="btn btn-outline-secondary me-1">
+                <a href="formModificarCategoria.php?idCategoria=<?= $categoria['idCategoria'] ?>" class="btn btn-outline-secondary me-1">
                     <i class="bi bi-pencil-square"></i>
                     Modificar
                 </a>
@@ -37,6 +45,9 @@
                 </a>
             </div>
             </li>
+<?php
+        }
+?>
         </ul>
 
 

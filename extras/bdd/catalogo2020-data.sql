@@ -1,27 +1,15 @@
--- phpMyAdmin SQL Dump
--- version 5.1.1
--- https://www.phpmyadmin.net/
---
+-- SQL Dump
 -- Servidor: localhost
--- Tiempo de generación: 27-12-2021 a las 07:27:54
+-- Tiempo de generación: 27-02-2021 a las 07:27:54
 -- Versión del servidor: 8.0.26
--- Versión de PHP: 8.0.11
+-- Versión de PHP: 8.1.12
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `catalogo2020`
+-- Base de datos: `catalogo2022`
 --
-CREATE DATABASE IF NOT EXISTS `catalogo2020` DEFAULT CHARACTER SET utf8mb4;
-USE `catalogo2020`;
+CREATE DATABASE IF NOT EXISTS `catalogo2022` DEFAULT CHARACTER SET utf8mb4;
+USE `catalogo2022`;
 
 -- --------------------------------------------------------
 
@@ -31,7 +19,7 @@ USE `catalogo2020`;
 
 DROP TABLE IF EXISTS `categorias`;
 CREATE TABLE `categorias` (
-  `idCategoria` tinyint UNSIGNED NOT NULL,
+  `idCategoria` tinyint primary key auto_increment NOT NULL,
   `catNombre` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -56,7 +44,7 @@ INSERT INTO `categorias` (`idCategoria`, `catNombre`) VALUES
 
 DROP TABLE IF EXISTS `marcas`;
 CREATE TABLE `marcas` (
-  `idMarca` tinyint UNSIGNED NOT NULL,
+  `idMarca` tinyint primary key auto_increment NOT NULL,
   `mkNombre` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -80,7 +68,7 @@ INSERT INTO `marcas` (`idMarca`, `mkNombre`) VALUES
 
 DROP TABLE IF EXISTS `productos`;
 CREATE TABLE `productos` (
-  `idProducto` mediumint UNSIGNED NOT NULL,
+  `idProducto` mediumint primary key auto_increment NOT NULL,
   `prdNombre` varchar(75) NOT NULL,
   `prdPrecio` double(8,2) NOT NULL,
   `idMarca` tinyint UNSIGNED NOT NULL,
@@ -107,59 +95,10 @@ INSERT INTO `productos` (`idProducto`, `prdNombre`, `prdPrecio`, `idMarca`, `idC
 --
 
 --
--- Indices de la tabla `categorias`
---
-ALTER TABLE `categorias`
-  ADD PRIMARY KEY (`idCategoria`);
-
---
--- Indices de la tabla `marcas`
---
-ALTER TABLE `marcas`
-  ADD PRIMARY KEY (`idMarca`);
-
---
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
-  ADD PRIMARY KEY (`idProducto`),
   ADD KEY `productos_idmarca_foreign` (`idMarca`),
   ADD KEY `productos_idcategoria_foreign` (`idCategoria`);
 
---
--- AUTO_INCREMENT de las tablas volcadas
---
 
---
--- AUTO_INCREMENT de la tabla `categorias`
---
-ALTER TABLE `categorias`
-  MODIFY `idCategoria` tinyint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de la tabla `marcas`
---
-ALTER TABLE `marcas`
-  MODIFY `idMarca` tinyint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT de la tabla `productos`
---
-ALTER TABLE `productos`
-  MODIFY `idProducto` mediumint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `productos`
---
-ALTER TABLE `productos`
-  ADD CONSTRAINT `productos_idcategoria_foreign` FOREIGN KEY (`idCategoria`) REFERENCES `categorias` (`idCategoria`),
-  ADD CONSTRAINT `productos_idmarca_foreign` FOREIGN KEY (`idMarca`) REFERENCES `marcas` (`idMarca`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
