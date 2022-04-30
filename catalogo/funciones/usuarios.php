@@ -1,5 +1,19 @@
 <?php
 
+    function listarUsuarios()
+    {
+        $link = conectar();
+        $sql  = "SELECT idUsuario, nombre, apellido, email
+                            FROM usuarios";
+        try{
+            $resultado = mysqli_query($link,$sql);
+        }
+        catch(Exception $e){
+            $resultado = false;
+            echo $e->getMessage();
+        }
+        return $resultado;
+    }
     function agregarUsuario()
     {
         $nombre = $_POST['nombre'] ;

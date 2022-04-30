@@ -23,11 +23,16 @@
                 </button>
             </form>
         </div>
-
+<?php
+        if( isset( $_GET['error'] ) ) {
+            //$error = $_GET['error'];
+?>
         <div class="alert alert-danger shadow p-4 col-8 mx-auto">
             Nombre de usuario y/o clave incorrectos
         </div>
-
+<?php
+        }
+?>
 
     </main>
 

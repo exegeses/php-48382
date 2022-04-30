@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS `catalogo2020`.`roles` ;
 CREATE TABLE IF NOT EXISTS `catalogo2020`.`roles`
 (
   `idRol` TINYINT NOT NULL primary key auto_increment,
-  `rol` VARCHAR(30) NOT NULL,
+  `rol` VARCHAR(30) NOT NULL
   )
 ENGINE = InnoDB;
 
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `catalogo2020`.`usuarios` (
   `apellido` VARCHAR(45) NOT NULL,
   `email` VARCHAR(50) NOT NULL,
   `clave` VARCHAR(75) NOT NULL,
-  `idRol` TINYINT NOT NULL,
+  `idRol` TINYINT NOT NULL
 )
 ENGINE = InnoDB;
 
