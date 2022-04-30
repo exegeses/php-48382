@@ -39,10 +39,16 @@
             $_SESSION['nombre'] = $usuario['nombre'];
             $_SESSION['apellido'] = $usuario['apellido'];
             $_SESSION['idRol'] = $usuario['idRol'];
-
+            //redirección a admin
+            header('location: admin.php');
         }
     }
     function logout()
     {}
     function autenticar()
-    {}
+    {
+        if( !isset( $_SESSION['login'] ) )
+        {
+            header('location: formLogin.php?error=2');
+        }
+    }
