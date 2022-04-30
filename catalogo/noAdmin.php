@@ -1,17 +1,16 @@
 <?php
     require 'config/config.php';
-    require 'funciones/autenticacion.php';
-        logout();
     include 'layout/header.php';
     include 'layout/nav.php';
 ?>
 
     <main class="container py-4">
-        <h1>Salir de sistema</h1>
+        <h1>¡Advertencia!</h1>
 
         <p class="alert shadow col-8 mx-auto ">
-            Gracias por usar nuestros servicios
+            Debe ser administrador para realizar esta tarea.
         </p>
+
     </main>
 
 <?php

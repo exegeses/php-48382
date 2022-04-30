@@ -44,11 +44,26 @@
         }
     }
     function logout()
-    {}
+    {
+        //eliminamos datos de la sesión
+        session_unset();
+        //eliminamos la sesión
+        session_destroy();
+        //redirección a index con un delay
+        header('refresh:3;url=index.php');
+    }
     function autenticar()
     {
         if( !isset( $_SESSION['login'] ) )
         {
             header('location: formLogin.php?error=2');
+        }
+    }
+
+    function esAdmin()
+    {
+        if( $_SESSION['idRol'] != 1 )
+        {
+            header('location: noAdmin.php');
         }
     }

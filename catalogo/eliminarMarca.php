@@ -1,4 +1,8 @@
 <?php
+    require 'config/config.php';
+    require 'funciones/autenticacion.php';
+        esAdmin();
+        autenticar();
     require 'funciones/conexion.php';
     require 'funciones/marcas.php';
     $chequeo = eliminarMarca();
