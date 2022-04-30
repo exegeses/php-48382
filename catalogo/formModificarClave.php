@@ -1,6 +1,6 @@
 <?php
     require 'config/config.php';
-    include 'layout/header.html';
+    include 'layout/header.php';
     include 'layout/nav.php';
 ?>
 
@@ -41,9 +41,16 @@
                     Volver a panel de usuarios
                 </a>
             </form>
-
         </div>
-
+<?php
+        if( isset($_GET['error']) ){
+?>
+        <div class="alert alert-danger shadow p-4 col-8 mx-auto">
+            La contraseña actual no coincide.
+        </div>
+<?php
+        }
+?>
         <script>
             let form = document.querySelector('.validarForm');
             let clave = document.querySelector('#clave');

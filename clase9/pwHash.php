@@ -2,6 +2,10 @@
     $clave = 'manzana';
     $pwHash = password_hash( $clave, PASSWORD_DEFAULT );
 
-    echo $pwHash;
+    echo $pwHash;// primer valor
+    echo '<br>';
 
-    //password_verify()
+    $pwHash = password_hash( $clave, PASSWORD_DEFAULT );
+    echo $pwHash;// segundo valor
+
+//password_verify()
